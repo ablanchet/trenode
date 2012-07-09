@@ -1,0 +1,19 @@
+﻿html
+{
+	background: lightgray;
+	font-family: 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif;
+}
+body
+{
+	background: white;
+	width: 800px;
+	margin: 20px auto;
+	padding: 50px;
+	border-radius: 5px;
+}
+h1
+{
+	margin: 0;
+	padding-bottom: 10px;
+	border-bottom: 1px solid black;
+}
