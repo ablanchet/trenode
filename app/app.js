@@ -88,8 +88,10 @@ app.get('/cards/label/:label', checkOAuth, function (req, res) {
             utils.formatDueDate(card);
             if (card.labels.length > 0) {
                 for (var o = 0; o < card.labels.length; o++) {
-                    if (card.labels[o].name == label)
+                    if (card.labels[o].name == label) {
+                        console.log(card);
                         cards.push(card);
+                    }
                 }
             }
         }

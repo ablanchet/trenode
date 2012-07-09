@@ -2,6 +2,8 @@ div.card
 	if(card.badges.due)
 		div.date=card.badges.due
 	p.name= card.name
-	a(href=card.url).url
+	a(href=card.url, target="_blank").url
 		=card.url
-	p.description= card.description
+	p.description=card.desc
+	each label in card.labels
+		include label

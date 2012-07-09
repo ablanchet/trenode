@@ -33,3 +33,27 @@
     float: right;
     padding : 2px;
 }
+.card .name
+{
+	padding: 5px;
+	margin: 0;
+	font-size: 17px;
+	font-style: italic;
+	padding-left: 15px;
+}
+.card .label
+{
+	display: inline-block;
+	text-decoration: none;	
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	color: white;
+	font-weight: bold;
+	margin:5px 3px 5px 5px;
+	padding: 1px 5px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.4),0 0 3px black;
+}
