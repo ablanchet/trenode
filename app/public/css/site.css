@@ -1,11 +1,11 @@
 ﻿html
 {
-	background: lightgray;
+	background: #164B69;
 	font-family: 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif;
 }
 body
 {
-	background: white;
+	background: rgba(255,255,255,0.8);
 	width: 800px;
 	margin: 20px auto;
 	padding: 50px;
@@ -16,4 +16,9 @@ h1
 	margin: 0;
 	padding-bottom: 10px;
 	border-bottom: 1px solid black;
+}
+.header a
+{
+	text-decoration: none;
+	color: Black;
 }

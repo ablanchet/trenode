@@ -1,0 +1,23 @@
+﻿.card
+{
+	border-color: #1F6993;
+	box-shadow: 0 0 4px #1F6993;
+	-moz-box-shadow: 0 0 4px #1f6993;
+	-ms-box-shadow: 0 0 4px #1f6993;
+	-o-box-shadow: 0 0 4px #1f6993;
+	-webkit-box-shadow: 0 0 4px #1F6993;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	
+	padding: 5px;
+	margin: 10px;
+	background: white;
+}
+.card .url
+{	
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
