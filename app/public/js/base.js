@@ -7,8 +7,3 @@
         }
     });
 });
-
-function getDate(date){
-        var d = new Date(date);
-        return d.getDate() + ' - ' + d.getMonth() + ' - ' + d.getYear(); 
-};

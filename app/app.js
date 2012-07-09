@@ -1,5 +1,6 @@
 var express = require('express');
 var oauth = require('oauth').OAuth;
+var utils = require('./utils.js');
 var Trello = require("node-trello");
 
 // Create express application
@@ -53,7 +54,7 @@ app.get('/oauth', function (req, res) {
                 token : oauth_token,
                 token_secret : oauth_token_secret
             };
-            res.redirect('https://trello.com/1/OAuthAuthorizeToken?oauth_token=' + oauth_token)
+            res.redirect('https://trello.com/1/OAuthAuthorizeToken?scope=read,write&name=TreNode!&oauth_token=' + oauth_token)
         }
     });
 });
@@ -84,9 +85,10 @@ app.get('/cards/label/:label', checkOAuth, function (req, res) {
         var cards = [];
         for (var i = 0; i < data.length; i++) {
             var card = data[i];
+            utils.formatDueDate(card);
             if (card.labels.length > 0) {
                 for (var o = 0; o < card.labels.length; o++) {
-                    if (card.labels[o].name == label) 
+                    if (card.labels[o].name == label)
                         cards.push(card);
                 }
             }
@@ -117,7 +119,12 @@ app.get('/cards/:type?', checkOAuth, function (req, res) {
             else {
                 res.status(404);
                 res.render('404');
+                return;
             }
+        }
+
+        for (var i = 0; i < cards.length; i++) {
+            utils.formatDueDate(cards[i]);
         }
 
         res.render('cards', { title: title, cards: cards });
