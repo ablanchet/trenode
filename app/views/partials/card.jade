@@ -1,4 +1,7 @@
 div.card
+	if(card.badges.due)
+		div.date  
+			= getDate(card.badges.due)
 	p.name= card.name
 	a(href=card.url).url
 		=card.url

@@ -21,3 +21,15 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+.card .date
+{
+    background: rgba(255, 0, 0, 0.6);
+	border-color: red;
+	box-shadow: 0 0 3px red;
+	-moz-box-shadow: 0 0 3px red;
+	-ms-box-shadow: 0 0 3px red;
+	-o-box-shadow: 0 0 3px red;
+	-webkit-box-shadow: 0 0 3px red;
+    float: right;
+    padding : 2px;
+}
