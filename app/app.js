@@ -5,10 +5,8 @@ var Trello = require("node-trello");
 var app = express.createServer();
 
 // Get configuration : call looks like : node app.js KEY=1234 TOKEN=123456
-var cfg =
-{
-    trello :
-    {
+var cfg = {
+    trello : {
         key: process.argv[2].substring(4),
         token: process.argv[3].substring(6)
     }
@@ -31,8 +29,23 @@ app.get('/', function (req, res) {
 
 // get cards grouped by label
 app.get('/cards/label/:label', function (req, res) {
-    // get all cards
-    // grouped by the req.params.label
+    var label = req.params.label;
+    var t = new Trello(cfg.trello.key, cfg.trello.token);
+    t.get('/1/members/my/cards', function (err, data) {
+        var cards = [];
+        for (var i = 0; i < data.length; i++) {
+            var card = data[i];
+            if (card.labels.length > 0) {
+                for (var o = 0; o < card.labels.length; o++) {
+                    if (card.labels[o].name == label) {
+                        cards.push(card);
+                    }
+                }
+            }
+        }
+
+        res.render('cardsbylabel', { label: label, cards: cards });
+    });
 });
 // all cards
 app.get('/cards/:type?', function (req, res) {
@@ -41,10 +54,12 @@ app.get('/cards/:type?', function (req, res) {
     t.get('/1/members/my/cards', function (err, data) {
         if (err) throw err;
         var cards = data;
+        var title = 'All your assigned cards';
 
         if (typeof type != 'undefined') {
             if (type === 'date') {
                 // get only the cards that have a due date
+                title = 'All your assigned cards with a due date';
                 cards = [];
                 for (var i = 0; i < data.length; i++) {
                     var card = data[i];
@@ -52,9 +67,13 @@ app.get('/cards/:type?', function (req, res) {
                 }
                 console.log(cards);
             }
+            else {
+                res.status(404);
+                res.render('404');
+            }
         }
 
-        res.render('cards', { cards: cards });
+        res.render('cards', { title: title, cards: cards });
     });
 });
 
